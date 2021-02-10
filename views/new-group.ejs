@@ -1,0 +1,34 @@
+<%- include("partials/header"); %>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container-fluid he-pa">
+
+<span class="navbar-brand mb-0 h1 brand-heading">Create a Chit Chat group</span>
+</div>
+</nav>
+
+
+<form class="form-position" action="/new-group" method="post">
+<div class="mb-3">
+<label for="group-name" class="form-label">Group Name</label>
+<input type="text" class="form-control" id="group-name" name="groupname" value="" style="width: 30%;" required>
+
+</div>
+<div class="mb-3">
+<label for="group-password" class="form-label">Password</label>
+<input type="password" class="form-control" id="group-password" name="grouppassword" value="" style="width: 30%;" required>
+
+</div>
+<button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+
+
+
+
+
+
+
+
+<%- include("partials/footer"); %>

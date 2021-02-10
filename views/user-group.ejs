@@ -1,0 +1,46 @@
+<%- include("partials/header"); %>
+
+<!-- Welcome note -->
+
+<section>
+<div class="welcome-note">
+<h1>Welcome to <%= groupName %></h1>
+<h3>Contacts</h3>
+</div>
+
+
+
+
+<pre id= "contacts" style="height: 70%; width: 22%; overflow: scroll"></pre>
+
+
+ <form class="" action="/add-contact" method="post"> %>
+  <input type="hidden" name="groupName" value="<%=groupName %>">
+<button type="submit" name="addContact" value="<%= %>">Add contact</button>
+</form>
+
+<form class="" action="/delete-contact" method="post">
+
+  <input type="hidden" name="groupName" value="<%=groupName %>">
+<button type="submit" name="deleteContact" value="<%=  %>">Delete contact</button>
+</form>
+
+<form class="" action="/send-message" method="post">
+  <input type="text" name="newMessage" placeholder="Enter message here" autofocus value="" required>
+  <input type="hidden" name="groupName" value="<%=groupName %>">
+  <button type="button" name="send" value="<%= %>" onclick="this.form.submit()">Send</button>
+</form>
+
+
+<form class="" action="/delete-message" method="post">
+  <pre id="messages" style="height: 400px; margin-left: 370px; overflow: scroll;"></pre>
+  <input type="button" name="checkedMessage" value="<%= %>" onchange="this.form.submit()">
+  <input type="hidden" name="groupName" value="<%= groupName %>">
+</form>
+
+
+<form class="" action="/delete-group" method="post">
+
+</form>
+
+<%- include("partials/footer"); %>

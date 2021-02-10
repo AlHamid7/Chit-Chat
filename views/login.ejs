@@ -1,0 +1,45 @@
+<%- include("partials/header"); %>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid he-pa">
+<a class="navbar-brand" href="/"><h1 class="home-heading">Chit Chat</h1></a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 navmargin">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-items">
+          <a class="nav-link" href="/register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+</nav>
+
+<form class="form-position" action="/login" method="post">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" name="email" style="width: 30%;" required>
+
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password" style="width: 30%;" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+</body>
+
+</html>
+
+
+<%- include("partials/footer"); %>

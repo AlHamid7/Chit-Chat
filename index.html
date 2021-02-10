@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Chit Chat</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+
+  </head>
+  <body>
+
+<h1>Real TIme Messaging</h1>
+<pre id= "contacts" style="height: 70%; width: 22%; overflow: scroll"></pre>
+<pre id="messages" style="height: 400px; margin-left: 370px; overflow: scroll;"></pre>
+<input type="text" id="messageBox" placeholder="Type your message here" style="display: block; width: 70%; margin-bottom: 10px; margin-left: 370px; padding: 10px"  name="" value="">
+<button id="send" title="Send Message" style="width: 70%; height: 30px; margin-left: 370px;" type="button" name="button">Send Message</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+
+(function(){
+const sendBtn = document.querySelector("#send");
+const messages = document.querySelector("#messages");
+const messageBox = document.querySelector("#messageBox");
+
+let ws;
+
+function showMessage(message){
+  messages.textContent += "\n\n${message}";
+  messages.scrollTop = messages.scrollHeight;
+  messageBox.value = "";
+}
+
+function init(){
+  if(ws){
+    ws.onerror = ws.onopen = ws.onclose = null;
+    ws.close();
+  }
+
+  ws = new WebSocket("ws://localhost:8080");
+  ws.onopen = ()=>{
+    console.log("Connection opened!");
+  }
+  ws.onmessage = ({data}) => showMessage(data);
+  ws.onclose = function(){
+    ws = null;
+  }
+}
+
+sendBtn.onclick = function(){
+  if(!ws){
+    showMessage("No WebSocket connection :(");
+    return;
+  }
+  ws.send(messageBox.value);
+  showMessage(messageBox.value);
+}
+init();
+})();
+</script>
+
+
+
+//     <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+//   <div class="container-fluid">
+//
+//     <div class="collapse navbar-collapse" id="navbarText">
+//       <ul class="navbar-nav me-auto mb-2 mb-lg-0 navmargin">
+//
+//         <li class="nav-items">
+//           <a class="nav-link" href="register.html">Register</a>
+//         </li>
+//         <li class="nav-item">
+//           <a class="nav-link" href="login.html">Login</a>
+//         </li>
+//       </ul>
+//
+//     </div>
+//   </div>
+// </nav>
+//
+// <div class="he-pa">
+//   <h1 class="home-heading">Chit Chat</h1>
+//   <p class="home-para">Connect and Chat with people you know</p>
+// </div> -->
+
+
+
+</body>
+</html>
